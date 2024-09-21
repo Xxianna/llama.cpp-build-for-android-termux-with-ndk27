@@ -4,12 +4,13 @@
 ## 当前功能
 - 支持armv8a设备，编译来自ndk。在termux中直接使用
 - 使用cpu运行
+- ggml的vulkan版本，使用vulkan运行，已在8gen3和kirin990上测试 **无法工作**
 
 
 
-## 说明
+## 说明 v0.1-cpu
 
-单纯编译时候遇到很多坑，遂开此仓库
+单纯编译时候遇到很多坑，遂开此仓库。本仓库是在wsl下使用ndk27编译的
 
 - 例如在termux中试图编译vulkan版本。但clang18编译出错，gcc下载太慢
 - windows下ndk编译似乎出现奇奇怪怪的问题
@@ -48,6 +49,18 @@ list(APPEND GGML_EXTRA_LIBS_PRIVATE -fopenmp -static-openmp)
   - https://github.com/ggerganov/llama.cpp/issues/8428
 - 但并非不能解决。单纯把.so移动到目录下是无效的，这方面linux不像windows。但再通过```export LD_LIBRARY_PATH=./```可以使用
 - 此外，可根据```ldd llama-cli```的输出查看当前程序依赖的其他库地址以及还缺什么库。安卓的动态库很多在```/system/lib64```下，但需要root才能访问
+
+## 说明 v0.1-ggmlvk
+- 问题：找不到vulkan_library
+  - 将安卓api版本改到大于24
+- 问题：找不到vulkan/vulkan.h
+  - 在cmake里find_package(vulkan)前把vulkan头文件地址设为windows vulkan sdk的最新的头文件地址
+- 问题：编译时，vulkan-shaders-gen运行不了
+  - 只设置了ndk的交叉编译，只对arm安卓产生可执行程序。需要索引到vulkan-shaders-gen目录，先编译一个当前平台版本并加入PATH
+- 问题：加载模型失败，不能运行
+  - 无解。该版本作废。gpu加速建议使用ggml的kompute方案（也是vulkan，不知道对8g3/kirin990是否可行，可能结果一样）或ncnn（在8g3上效率常常比cpu高，但输出略有差别，以及模型转换较困难
+ 
+## 说明 v0.2-ggml-kompute-vulkan
 
 
 
