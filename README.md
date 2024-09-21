@@ -62,6 +62,9 @@ list(APPEND GGML_EXTRA_LIBS_PRIVATE -fopenmp -static-openmp)
 ```
  cmake -DCMAKE_TOOLCHAIN_FILE=$NDK/build/cmake/android.toolchain.cmake -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-29 -DCMAKE_C_FLAGS=-march=armv8.4a+dotprod -DGGML_VULKAN=1 ..
 ```
+- 参考链接：https://coderfan.net/deploy-llama-cpp-in-android-system.html#:~:text=1.%20vulkan-
+![image](https://github.com/user-attachments/assets/607a6d5f-4ffa-4caa-ab41-556328edfa30)
+
  
 ## 说明 v0.3-ggml-kompute-vulkan
 
