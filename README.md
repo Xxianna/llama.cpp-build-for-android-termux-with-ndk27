@@ -50,7 +50,7 @@ list(APPEND GGML_EXTRA_LIBS_PRIVATE -fopenmp -static-openmp)
 - 但并非不能解决。单纯把.so移动到目录下是无效的，这方面linux不像windows。但再通过```export LD_LIBRARY_PATH=./```可以使用
 - 此外，可根据```ldd llama-cli```的输出查看当前程序依赖的其他库地址以及还缺什么库。安卓的动态库很多在```/system/lib64```下，但需要root才能访问
 
-## 说明 v0.1-ggmlvk
+## 说明 v0.2-ggmlvk
 - 问题：找不到vulkan_library
   - 将安卓api版本改到大于24
 - 问题：找不到vulkan/vulkan.h
@@ -60,7 +60,7 @@ list(APPEND GGML_EXTRA_LIBS_PRIVATE -fopenmp -static-openmp)
 - 问题：加载模型失败，不能运行
   - 无解。该版本作废。gpu加速建议使用ggml的kompute方案（也是vulkan，不知道对8g3/kirin990是否可行，可能结果一样）或ncnn（在8g3上效率常常比cpu高，但输出略有差别，以及模型转换较困难
  
-## 说明 v0.2-ggml-kompute-vulkan
+## 说明 v0.3-ggml-kompute-vulkan
 
 
 
