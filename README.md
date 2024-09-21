@@ -67,7 +67,9 @@ list(APPEND GGML_EXTRA_LIBS_PRIVATE -fopenmp -static-openmp)
 
  
 ## 说明 v0.3-ggml-kompute-vulkan
-
+- xxd也需要另外设编译器编译
+- .comp->.spv->.h过程可能出问题，着色器编译
+- 问题较多，未产生成果
 
 
 
