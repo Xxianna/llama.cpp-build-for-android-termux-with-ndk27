@@ -59,6 +59,9 @@ list(APPEND GGML_EXTRA_LIBS_PRIVATE -fopenmp -static-openmp)
   - 只设置了ndk的交叉编译，只对arm安卓产生可执行程序。需要索引到vulkan-shaders-gen目录，先编译一个当前平台版本并加入PATH
 - 问题：加载模型失败，不能运行
   - 无解。该版本作废。gpu加速建议使用ggml的kompute方案（也是vulkan，不知道对8g3/kirin990是否可行，可能结果一样）或ncnn（在8g3上效率常常比cpu高，但输出略有差别，以及模型转换较困难
+```
+ cmake -DCMAKE_TOOLCHAIN_FILE=$NDK/build/cmake/android.toolchain.cmake -DANDROID_ABI=arm64-v8a -DANDROID_PLATFORM=android-29 -DCMAKE_C_FLAGS=-march=armv8.4a+dotprod -DGGML_VULKAN=1 ..
+```
  
 ## 说明 v0.3-ggml-kompute-vulkan
 
