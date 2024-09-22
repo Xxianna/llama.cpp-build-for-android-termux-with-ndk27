@@ -71,6 +71,8 @@ list(APPEND GGML_EXTRA_LIBS_PRIVATE -fopenmp -static-openmp)
 - .comp->.spv->.h过程可能出问题，着色器编译
 - 问题较多，未产生成果
 
+## 附：
+目前用最新版chrome，特性全开，手机上也不能运行mlc或者huggingface提供的webgpullm。端侧异构道阻且长
 
 
 
